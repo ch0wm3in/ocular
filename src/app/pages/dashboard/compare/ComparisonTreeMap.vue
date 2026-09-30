@@ -11,7 +11,7 @@ import { uuid } from '@utils/uuid/uuid.ts';
 import { computed, type DeepReadonly } from 'vue';
 import { useI18n } from 'vue-i18n';
 import type { TreeMapChartConfig, TreeMapChartNode } from '@components/charts/tree-map-chart/TreeMapChart.types.ts';
-import type { BudgetGroup, BudgetYear } from '@store/state/types.ts';
+import type { BudgetGroup, BudgetSection, BudgetYear } from '@store/state/types.ts';
 import type { ClassNames } from '@utils/types.ts';
 
 const props = defineProps<{
@@ -78,18 +78,24 @@ const data = computed((): TreeMapChartConfig => {
 
   const incomeGroup = budgetGroupToNode(current.income, 'Income', (value) => color('var(--c-success)', value));
   const expensesGroup = budgetGroupToNode(current.expenses, 'Expenses', (value) => color('var(--c-danger)', value));
+  const savingsGroup = budgetGroupToNode(current.savings, t('page.savings.title'), (value) =>
+    color('var(--c-secondary)', value)
+  );
 
   const resolve = (
     predicate: (node: TreeMapChartNode) => boolean
-  ): { type: 'income' | 'expenses'; node: TreeMapChartNode } | undefined => {
+  ): { type: BudgetSection; node: TreeMapChartNode } | undefined => {
     const incomeNode = resolveNode([incomeGroup], predicate);
     const expensesNode = resolveNode([expensesGroup], predicate);
+    const savingsNode = resolveNode([savingsGroup], predicate);
 
     return incomeNode
       ? { type: 'income', node: incomeNode }
       : expensesNode
         ? { type: 'expenses', node: expensesNode }
-        : undefined;
+        : savingsNode
+          ? { type: 'savings', node: savingsNode }
+          : undefined;
   };
 
   return {
@@ -129,7 +135,7 @@ const data = computed((): TreeMapChartConfig => {
             year: other.year
           });
     },
-    nodes: [incomeGroup, expensesGroup]
+    nodes: [incomeGroup, expensesGroup, savingsGroup]
   };
 });
 </script>

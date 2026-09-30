@@ -1,4 +1,5 @@
 import cze from './locales/cze.json?url';
+import da from './locales/da.json?url';
 import de from './locales/de.json?url';
 import en from './locales/en.json?url';
 import es from './locales/es.json?url';
@@ -16,6 +17,7 @@ import { createI18n } from 'vue-i18n';
 import type { IntlNumberFormat } from 'vue-i18n';
 
 const localeUrls = {
+  da,
   de,
   'de-ch': de,
   'de-at': de,

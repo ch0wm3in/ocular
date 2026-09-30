@@ -1,4 +1,4 @@
-import { sum } from '@utils/array/array.ts';
+import { subtract, sum } from '@utils/array/array.ts';
 import type { BudgetGroup, BudgetYear } from '../types';
 import type { DeepReadonly } from 'vue';
 
@@ -39,5 +39,7 @@ export const sumOfBudgets = (budgets: DeepReadonly<BudgetGroup['budgets']>): num
 export const sumOfBudgetGroups = (groups: DeepReadonly<BudgetGroup[]>): number =>
   sum(groups.flatMap((v) => sumOfBudgets(v.budgets)));
 
-export const sumOfBudgetYear = ({ income, expenses }: DeepReadonly<BudgetYear>) =>
-  sumOfBudgetGroups(income) - sumOfBudgetGroups(expenses);
+export const availableToSpend = ({ income, expenses, savings }: DeepReadonly<BudgetYear>): number[] =>
+  subtract(subtract(totals(income), totals(expenses)), totals(savings));
+
+export const sumOfBudgetYear = (budgetYear: DeepReadonly<BudgetYear>) => sum(availableToSpend(budgetYear));

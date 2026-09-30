@@ -14,11 +14,16 @@ export interface BudgetGroup {
   collapsed?: boolean;
 }
 
+export type BudgetSection = 'expenses' | 'income' | 'savings';
+
 export interface BudgetYear {
   year: number;
   expenses: BudgetGroup[];
   income: BudgetGroup[];
+  savings: BudgetGroup[];
 }
+
+type LegacyBudgetYear = Omit<BudgetYear, 'savings'>;
 
 export interface DataStateV1 extends MigratableState<1> {
   expenses: BudgetGroup[];
@@ -26,15 +31,21 @@ export interface DataStateV1 extends MigratableState<1> {
 }
 
 export interface DataStateV2 extends MigratableState<2> {
-  years: BudgetYear[];
+  years: LegacyBudgetYear[];
 }
 
 export interface DataStateV3 extends MigratableState<3> {
+  years: LegacyBudgetYear[];
+  locale: AvailableLocale;
+  currency: string;
+}
+
+export interface DataStateV4 extends MigratableState<4> {
   years: BudgetYear[];
   locale: AvailableLocale;
   currency: string;
 }
 
 // Latest structure
-export type DataStates = DataStateV1 | DataStateV2 | DataStateV3;
-export type DataState = DataStateV3;
+export type DataStates = DataStateV1 | DataStateV2 | DataStateV3 | DataStateV4;
+export type DataState = DataStateV4;

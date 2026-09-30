@@ -6,9 +6,10 @@
       :import="() => import('./widgets/charts/DevelopmentChart.vue')"
     />
 
-    <TotalsSummaryTable :income="income" :expenses="expenses" />
+    <TotalsSummaryTable :income="income" :expenses="expenses" :savings="savings" />
     <GroupsSummaryTable testId="income" :title="t('page.dashboard.income')" :groups="state.income" />
     <GroupsSummaryTable testId="expenses" :title="t('page.dashboard.expenses')" :groups="state.expenses" />
+    <GroupsSummaryTable testId="savings" :title="t('page.savings.title')" :groups="state.savings" />
   </div>
 </template>
 
@@ -28,6 +29,7 @@ const appSize = useAppSize();
 
 const income = computed(() => totals(state.income));
 const expenses = computed(() => totals(state.expenses));
+const savings = computed(() => totals(state.savings));
 </script>
 
 <style lang="scss" module>

@@ -56,7 +56,7 @@
     "info": {
       "about": "О проекте Ocular",
       "github": "Проект на GitHub, рассмотрите возможность пожертвования, чтобы поддержать его!",
-      "madeWithLove": "Сделано с ❤️ Симон",
+      "madeWithLove": "Сделано с ❤️ ch0wm3in",
       "meta": "{version} / {date} / {sha}",
       "donation": "пожертвование"
     },
@@ -111,6 +111,9 @@
     "expenses": {
       "title": "Расходы",
       "expensesFor": "Расходы за {year}"
+    },
+    "savings": {
+      "title": "Savings / Transfers"
     },
     "dashboard": {
       "income": "Доходы",

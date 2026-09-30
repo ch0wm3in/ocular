@@ -37,6 +37,18 @@
       <span :class="$style.muted">{{ n(sum(expenses)) }}</span>
       <span :class="$style.muted">{{ n(average(expenses)) }}</span>
 
+      <!-- Savings -->
+      <span :class="[$style.bold, $style.muted]">{{ t('page.savings.title') }}</span>
+      <span
+        v-for="(amount, index) of savings"
+        :key="index"
+        :class="[$style.muted, { [$style.current]: isCurrentMonth(index) }]"
+      >
+        {{ n(amount) }}
+      </span>
+      <span :class="$style.muted">{{ n(sum(savings)) }}</span>
+      <span :class="$style.muted">{{ n(average(savings)) }}</span>
+
       <!-- Net savings  -->
       <span :class="[$style.bold, $style.muted]">{{ t('page.dashboard.summary.netSavings') }}</span>
       <span
@@ -77,6 +89,7 @@ import { useI18n } from 'vue-i18n';
 const props = defineProps<{
   income: number[];
   expenses: number[];
+  savings: number[];
 }>();
 
 const { t } = useI18n();
@@ -85,7 +98,7 @@ const { isCurrentMonth } = useStateUtils();
 const { state: settings } = useSettingsStore();
 const months = useMonthNames('long', () => settings.general.monthOffset);
 
-const netSavings = computed(() => subtract(props.income, props.expenses));
+const netSavings = computed(() => subtract(subtract(props.income, props.expenses), props.savings));
 const endingBalance = computed(() => aggregate(netSavings.value));
 </script>
 

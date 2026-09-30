@@ -123,12 +123,14 @@ const totalIncome = computed(() =>
 );
 
 const totalExpenses = computed(() => sumOfBudgetGroups(state.expenses));
+const totalSavings = computed(() => sumOfBudgetGroups(state.savings));
 
-const isEmpty = computed(() => !totalIncome.value || !totalExpenses.value);
+const isEmpty = computed(() => !totalIncome.value || (!totalExpenses.value && !totalSavings.value));
 
 const chartProps = computed(() => ({
   totalIncome: totalIncome.value,
   totalExpenses: totalExpenses.value,
+  totalSavings: totalSavings.value,
   highlight: props.highlight,
   percentages: showPercentages.value,
   averages: showAverages.value

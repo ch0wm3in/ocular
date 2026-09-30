@@ -11,7 +11,7 @@ export const generateTemplateData = (
   const year = new Date().getFullYear();
 
   return {
-    version: 3,
+    version: 4,
     currency,
     locale,
     years: [
@@ -154,7 +154,8 @@ export const generateTemplateData = (
             t('feature.templates.base.category.refunds'),
             t('feature.templates.base.category.other')
           ])
-        ]
+        ],
+        savings: [generateBudgetGroup(t('page.savings.title'), [t('page.savings.title')])]
       }
     ]
   };

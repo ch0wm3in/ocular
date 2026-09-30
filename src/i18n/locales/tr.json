@@ -56,7 +56,7 @@
     "info": {
       "about": "Ocular Hakkında",
       "github": "Bu projeye {link} bağlantısıyla göz atın, onu canlı tutmak için bir {donation} düşünün!",
-      "madeWithLove": "Simon tarafından ❤️ ile yapılmıştır",
+      "madeWithLove": "ch0wm3in tarafından ❤️ ile yapılmıştır",
       "meta": "{version} / {date} / {sha}",
       "donation": "bağış"
     },
@@ -111,6 +111,9 @@
     "expenses": {
       "title": "Harcamalar",
       "expensesFor": "{year} için Harcamalar"
+    },
+    "savings": {
+      "title": "Savings / Transfers"
     },
     "dashboard": {
       "income": "Gelir",

@@ -23,6 +23,7 @@ const props = defineProps<{
   percentages?: boolean;
   totalIncome: number;
   totalExpenses: number;
+  totalSavings: number;
 }>();
 
 const { t } = useI18n();
@@ -79,34 +80,50 @@ const data = computed((): StackedBarChartConfig => {
     };
   });
 
-  if (props.totalIncome > props.totalExpenses) {
+  const savingsBlocks: StackedBarChartBlock[] = state.savings.map((v) => {
+    const value = sumOfBudgets(v.budgets);
+
+    return {
+      id: v.id,
+      label: v.name,
+      color: color(180 + (value / props.totalSavings) * 60),
+      formatter: (num, type) => `${v.name} (${format(num, type)})`,
+      muted: false,
+      value
+    };
+  });
+
+  const totalAllocated = props.totalExpenses + props.totalSavings;
+
+  if (props.totalIncome > totalAllocated) {
     expenseBlocks.push({
       id: uuid(),
       label: t('page.dashboard.overview.surplus'),
       color: color(120),
       formatter: (num, type) => `${t('page.dashboard.overview.surplus')} (${format(num, type)})`,
       muted: props.highlight === 'income',
-      value: props.totalIncome - props.totalExpenses
+      value: props.totalIncome - totalAllocated
     });
-  } else if (props.totalExpenses > props.totalIncome) {
+  } else if (totalAllocated > props.totalIncome) {
     incomeBlocks.push({
       id: uuid(),
       label: t('page.dashboard.overview.deficit'),
       color: color(0),
       formatter: (num, type) => `${t('page.dashboard.overview.deficit')} (${format(num, type)})`,
       muted: props.highlight === 'expenses',
-      value: props.totalExpenses - props.totalIncome
+      value: totalAllocated - props.totalIncome
     });
   }
 
   if (props.averages) {
-    expenseBlocks.concat(incomeBlocks).forEach((v) => (v.value /= 12));
+    expenseBlocks.concat(incomeBlocks, savingsBlocks).forEach((v) => (v.value /= 12));
   }
 
   return {
     bars: [
       { label: 'Income', blocks: incomeBlocks },
-      { label: 'Expenses', blocks: expenseBlocks }
+      { label: 'Expenses', blocks: expenseBlocks },
+      { label: t('page.savings.title'), blocks: savingsBlocks }
     ]
   };
 });

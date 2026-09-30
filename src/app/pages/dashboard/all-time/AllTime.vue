@@ -71,6 +71,7 @@ const cards = computed((): Card[] => {
   const currentYearExpenses = currentYear?.expenses ? sum(totals(currentYear.expenses)) : 0;
   const allTimeIncome = sum(totals(state.years.flatMap((v) => v.income)));
   const allTimeExpenses = sum(totals(state.years.flatMap((v) => v.expenses)));
+  const allTimeTransfers = sum(totals(state.years.flatMap((v) => v.savings)));
 
   const percent = (v: number) => n(v, { key: 'percent', maximumFractionDigits: 2 });
 
@@ -112,9 +113,15 @@ const cards = computed((): Card[] => {
       onPointerLeave: () => (highlight.value = undefined)
     },
     {
+      title: t('page.savings.title'),
+      value: allTimeTransfers,
+      text: allTimeTransfers ? undefined : '—',
+      testId: 'all-time-transfers'
+    },
+    {
       title: t('page.dashboard.allTime.allTimeSavings'),
-      value: allTimeIncome - allTimeExpenses,
-      text: allTimeIncome && allTimeExpenses ? undefined : '—',
+      value: allTimeIncome - allTimeExpenses - allTimeTransfers,
+      text: allTimeIncome && (allTimeExpenses || allTimeTransfers) ? undefined : '—',
       testId: 'all-time-savings'
     }
   ];
@@ -144,7 +151,7 @@ const cards = computed((): Card[] => {
 
 .cards {
   display: grid;
-  grid-template: 1fr / repeat(5, 1fr);
+  grid-template: 1fr / repeat(6, 1fr);
   flex-shrink: 0;
   padding: 16px;
   gap: 8px;

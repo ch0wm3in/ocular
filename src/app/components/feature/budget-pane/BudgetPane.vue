@@ -17,10 +17,11 @@ import Pane from '@components/feature/pane/Pane.vue';
 import { useDataStore } from '@store/state';
 import { totals } from '@store/state/utils/budgets';
 import { computed } from 'vue';
+import type { BudgetSection } from '@store/state/types.ts';
 
 const props = defineProps<{
   title?: string;
-  type: 'expenses' | 'income';
+  type: BudgetSection;
 }>();
 
 const { state } = useDataStore();

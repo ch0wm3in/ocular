@@ -22,6 +22,7 @@ it('should generate a budget group', () => {
 it('should generate a budget year and preserve values when includeValues is true', () => {
   const source = {
     year: 2020,
+    savings: [],
     income: [
       {
         id: uuid(),
@@ -52,6 +53,7 @@ it('should generate a budget year and preserve values when includeValues is true
 it('should clear values when includeValues is false', () => {
   const source = {
     year: 2020,
+    savings: [],
     income: [
       {
         id: uuid(),
@@ -72,6 +74,7 @@ it('should filter income and expense groups by provided ids', () => {
   const secondIncomeId = uuid();
   const source = {
     year: 2020,
+    savings: [],
     income: [
       { id: uuid(), name: 'A', budgets: [{ id: uuid(), name: 'A1', values: new Array(12).fill(1) }] },
       { id: secondIncomeId, name: 'B', budgets: [{ id: uuid(), name: 'B1', values: new Array(12).fill(2) }] }

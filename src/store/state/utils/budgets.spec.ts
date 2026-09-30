@@ -1,4 +1,4 @@
-import { totals, flatten, sumOfBudgetGroups, sumOfBudgetYear } from './budgets';
+import { availableToSpend, totals, flatten, sumOfBudgetGroups, sumOfBudgetYear } from './budgets';
 import { it, expect } from 'vitest';
 import type { BudgetGroup, BudgetYear } from '../types';
 
@@ -40,6 +40,13 @@ it('calculate final balance', () => {
   const budgetYear: BudgetYear = {
     year: 2023,
     income: budgetGroups,
+    savings: [
+      {
+        id: '4',
+        name: 'Savings',
+        budgets: [{ id: '7', name: 'Emergency fund', values: [100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] }]
+      }
+    ],
     expenses: [
       {
         id: '3',
@@ -52,5 +59,6 @@ it('calculate final balance', () => {
     ]
   };
 
-  expect(sumOfBudgetYear(budgetYear)).toBe(3300);
+  expect(availableToSpend(budgetYear)[0]).toBe(800);
+  expect(sumOfBudgetYear(budgetYear)).toBe(3200);
 });

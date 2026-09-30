@@ -76,9 +76,10 @@ import { useDataStore } from '@store/state';
 import { RiAddCircleLine, RiLockLine, RiLockUnlockLine } from '@remixicon/vue';
 import { computed, ref, shallowReactive } from 'vue';
 import { useI18n } from 'vue-i18n';
+import type { BudgetSection } from '@store/state/types.ts';
 
 const props = defineProps<{
-  type: 'expenses' | 'income';
+  type: BudgetSection;
 }>();
 
 const months = useMonthNames('long', () => settings.general.monthOffset);

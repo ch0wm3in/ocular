@@ -20,6 +20,7 @@ export type GenerateBudgetYearOptions = {
   includeValues?: boolean;
   incomeGroups?: string[];
   expenseGroups?: string[];
+  savingsGroups?: string[];
 };
 
 export const generateBudgetYear = (options: GenerateBudgetYearOptions): BudgetYear => {
@@ -40,6 +41,9 @@ export const generateBudgetYear = (options: GenerateBudgetYearOptions): BudgetYe
     expenses:
       options.source?.expenses
         .filter((v) => !options.expenseGroups || options.expenseGroups.includes(v.id))
-        .map(clearValues) ?? []
+        .map(clearValues) ?? [],
+    savings: (options.source?.savings ?? [])
+      .filter((v) => !options.savingsGroups || options.savingsGroups.includes(v.id))
+      .map(clearValues)
   };
 };

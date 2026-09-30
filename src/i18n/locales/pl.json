@@ -56,7 +56,7 @@
     "info": {
       "about": "O Ocular",
       "github": "Sprawdź ten projekt na {link}, rozważ {donation}, aby utrzymać go przy życiu!",
-      "madeWithLove": "Stworzone z ❤️ przez Simona",
+      "madeWithLove": "Stworzone z ❤️ przez ch0wm3in",
       "meta": "{version} / {date} / {sha}",
       "donation": "darowizna"
     },
@@ -111,6 +111,9 @@
     "expenses": {
       "title": "Wydatki",
       "expensesFor": "Wydatki za {year}"
+    },
+    "savings": {
+      "title": "Savings / Transfers"
     },
     "dashboard": {
       "income": "Dochody",

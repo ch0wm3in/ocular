@@ -42,6 +42,11 @@ export const router = createRouter({
       component: () => import('./app/pages/expenses/Expenses.vue')
     },
     {
+      path: '/savings',
+      name: 'savings',
+      component: () => import('./app/pages/savings/Savings.vue')
+    },
+    {
       path: '/:pathMatch(.*)*',
       redirect: '/dashboard'
     }

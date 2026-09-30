@@ -27,8 +27,9 @@ const { state: settings } = useSettingsStore();
 
 const allIncomes = computed(() => state.years.flatMap((v) => totals(v.income)));
 const allExpenses = computed(() => state.years.flatMap((v) => totals(v.expenses)));
+const allSavings = computed(() => state.years.flatMap((v) => totals(v.savings)));
 
-const isEmpty = computed(() => !sum(allIncomes.value) && !sum(allExpenses.value));
+const isEmpty = computed(() => !sum(allIncomes.value) && !sum(allExpenses.value) && !sum(allSavings.value));
 
 const data = computed((): StackedLineChartConfig => {
   const totalMonths = state.years.length * 12;
@@ -57,6 +58,13 @@ const data = computed((): StackedLineChartConfig => {
         data: allExpenses.value,
         color: 'var(--c-danger-light-dimmed)',
         muted: props.highlight === 'income'
+      },
+      {
+        name: t('page.savings.title'),
+        trendName: t('page.savings.title'),
+        data: allSavings.value,
+        color: 'var(--c-secondary-light-dimmed)',
+        muted: false
       }
     ]
   };

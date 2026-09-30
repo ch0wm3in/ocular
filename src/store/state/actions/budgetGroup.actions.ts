@@ -2,14 +2,12 @@ import { generateBudget } from '@store/state/actions/budget.actions.ts';
 import { clear, moveInArrays, remove } from '@utils/array/array.ts';
 import { uuid } from '@utils/uuid/uuid.ts';
 import type { ActionOptions } from '@store/state/actions/action.types.ts';
-import type { BudgetGroup } from '@store/state/types.ts';
-
-type Group = 'expenses' | 'income';
+import type { BudgetGroup, BudgetSection } from '@store/state/types.ts';
 
 export const budgetGroupActions = ({ getBudgetGroup, budgetYear, undoFunctions }: ActionOptions) => ({
   getBudgetGroup: (id: string) => getBudgetGroup(id),
 
-  addBudgetGroup: (target: Group, name: string, budget?: string) => {
+  addBudgetGroup: (target: BudgetSection, name: string, budget?: string) => {
     budgetYear.value[target].push({
       name,
       id: uuid(),
@@ -26,7 +24,7 @@ export const budgetGroupActions = ({ getBudgetGroup, budgetYear, undoFunctions }
     }
   },
 
-  setBudgetGroups: (target: Group, groups: BudgetGroup[]): void => {
+  setBudgetGroups: (target: BudgetSection, groups: BudgetGroup[]): void => {
     budgetYear.value[target] = groups;
     clear(undoFunctions);
   },
@@ -40,14 +38,15 @@ export const budgetGroupActions = ({ getBudgetGroup, budgetYear, undoFunctions }
   },
 
   moveBudgetGroup: (id: string, target: string, after?: boolean) => {
-    const { income, expenses } = budgetYear.value;
-    moveInArrays([income, expenses], id, target, after);
+    const { income, expenses, savings } = budgetYear.value;
+    moveInArrays([income, expenses, savings], id, target, after);
   },
 
   removeBudgetGroup: (id: string) => {
     const year = budgetYear.value;
     const expenseGroup = remove(year.expenses, (v) => v.id === id);
     const incomeGroup = remove(year.income, (v) => v.id === id);
+    const savingsGroup = remove(year.savings, (v) => v.id === id);
 
     undoFunctions.push(() => {
       if (expenseGroup) {
@@ -55,6 +54,9 @@ export const budgetGroupActions = ({ getBudgetGroup, budgetYear, undoFunctions }
       }
       if (incomeGroup) {
         year.income.push(incomeGroup);
+      }
+      if (savingsGroup) {
+        year.savings.push(savingsGroup);
       }
     });
   }

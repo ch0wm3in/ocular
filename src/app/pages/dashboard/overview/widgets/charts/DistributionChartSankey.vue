@@ -25,6 +25,7 @@ const props = defineProps<{
   percentages?: boolean;
   totalIncome: number;
   totalExpenses: number;
+  totalSavings: number;
 }>();
 
 const { state: settings } = useSettingsStore();
@@ -218,6 +219,41 @@ const data = computed((): SankeyChartConfig => {
           muted: props.highlight === 'income'
         });
       }
+    }
+  }
+
+  for (const group of state.savings) {
+    const total = sumOfBudgets(group.budgets);
+
+    if (!total) {
+      continue;
+    }
+
+    labels.push({
+      id: group.id,
+      formatter: (value, type) => `${group.name} (${format(value, type)})`,
+      color: color(180 + 60 * (total / props.totalSavings)),
+      radius: [0, 5, 5, 0]
+    });
+
+    links.push({ id: uuid(), target: group.id, source: income.id, value: total });
+
+    for (const budget of group.budgets) {
+      const budgetTotal = sum(budget.values);
+
+      if (!budgetTotal) {
+        continue;
+      }
+
+      labels.push({
+        id: budget.id,
+        formatter: (value, type) => `${budget.name} (${format(value, type)})`,
+        color: color(180 + 60 * (budgetTotal / props.totalSavings)),
+        align: 'left',
+        radius: [0, 5, 5, 0]
+      });
+
+      links.push({ id: uuid(), target: budget.id, source: group.id, value: budgetTotal });
     }
   }
 

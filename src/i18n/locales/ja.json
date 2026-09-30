@@ -56,7 +56,7 @@
     "info": {
       "about": "Ocularについて",
       "github": "{link}でこのプロジェクトをチェックして、継続のために{donation}を検討してください！",
-      "madeWithLove": "Simonが❤️を込めて制作",
+      "madeWithLove": "ch0wm3inが❤️を込めて制作",
       "meta": "{version} / {date} / {sha}",
       "donation": "寄付"
     },
@@ -111,6 +111,9 @@
     "expenses": {
       "title": "支出",
       "expensesFor": "{year}年の支出"
+    },
+    "savings": {
+      "title": "Savings / Transfers"
     },
     "dashboard": {
       "income": "収入",

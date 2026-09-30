@@ -11,12 +11,13 @@ export const generateDemoData = (
   const year = new Date().getFullYear();
 
   return {
-    version: 3,
+    version: 4,
     currency,
     locale,
     years: [
       {
         year: year - 1,
+        savings: [],
         expenses: [
           {
             id: uuid(),
@@ -338,6 +339,7 @@ export const generateDemoData = (
       },
       {
         year: year,
+        savings: [],
         income: [
           {
             id: uuid(),

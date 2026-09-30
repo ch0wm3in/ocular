@@ -62,7 +62,7 @@ import ComponentTransition from '@components/misc/component-transition/Component
 import { useAppSize } from '@composables/app-size/useAppSize.ts';
 import { useSquircle } from '@composables/squircle/useSquircle.ts';
 import { useStorage } from '@store/storage/useStorage.ts';
-import { RiDonutChartLine, RiHandCoinLine, RiShoppingBagLine } from '@remixicon/vue';
+import { RiDonutChartLine, RiHandCoinLine, RiSafe2Line, RiShoppingBagLine } from '@remixicon/vue';
 import { computed, useCssModule, useTemplateRef } from 'vue';
 import { useI18n } from 'vue-i18n';
 import type { ClassNames } from '@utils/types.ts';
@@ -86,7 +86,8 @@ useSquircle(frame, () => (['minimized', 'mobile'].includes(appSize.value) ? 0 : 
 const buttons = computed((): FrameButton[] => [
   { icon: RiDonutChartLine, name: 'dashboard', tooltip: t('page.dashboard.overview.title'), class: styles.dashboard },
   { icon: RiHandCoinLine, name: 'income', tooltip: t('page.income.title'), class: styles.income },
-  { icon: RiShoppingBagLine, name: 'expenses', tooltip: t('page.expenses.title'), class: styles.expenses }
+  { icon: RiShoppingBagLine, name: 'expenses', tooltip: t('page.expenses.title'), class: styles.expenses },
+  { icon: RiSafe2Line, name: 'savings', tooltip: t('page.savings.title') }
 ]);
 </script>
 

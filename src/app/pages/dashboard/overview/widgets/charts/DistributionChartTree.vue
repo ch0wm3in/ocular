@@ -13,6 +13,7 @@ import { uuid } from '@utils/uuid/uuid.ts';
 import { computed, useTemplateRef } from 'vue';
 import { useI18n } from 'vue-i18n';
 import type { TreeMapChartConfig, TreeMapChartNode } from '@components/charts/tree-map-chart/TreeMapChart.types.ts';
+import type { BudgetSection } from '@store/state/types.ts';
 
 const props = defineProps<{
   highlight?: 'income' | 'expenses';
@@ -20,6 +21,7 @@ const props = defineProps<{
   percentages?: boolean;
   totalIncome: number;
   totalExpenses: number;
+  totalSavings: number;
 }>();
 
 const { state: settings } = useSettingsStore();
@@ -29,13 +31,15 @@ const { n } = useNumberFormatter();
 
 const chart = useTemplateRef('chart');
 
-const budgetGroupToNode = (type: 'income' | 'expenses'): TreeMapChartNode => {
+const budgetGroupToNode = (type: BudgetSection): TreeMapChartNode => {
   const groups = [...state[type]];
-  const total = sumOfBudgetGroups(groups) + (settings.general.carryOver ? (state.overallBalance ?? 0) : 0);
+  const total =
+    sumOfBudgetGroups(groups) + (type === 'income' && settings.general.carryOver ? (state.overallBalance ?? 0) : 0);
   const overallBalance = state.overallBalance ?? 0;
   const deficitAmount = -state.endingBalance;
 
-  const baseColor = type === 'income' ? 'var(--c-success)' : 'var(--c-warning)';
+  const baseColor =
+    type === 'income' ? 'var(--c-success)' : type === 'expenses' ? 'var(--c-warning)' : 'var(--c-secondary)';
   const baseTransparency =
     (type === 'income' && props.highlight === 'expenses') || (type === 'expenses' && props.highlight === 'income')
       ? 50
@@ -106,7 +110,7 @@ const budgetGroupToNode = (type: 'income' | 'expenses'): TreeMapChartNode => {
 };
 
 const data = computed((): TreeMapChartConfig => ({
-  nodes: [budgetGroupToNode('income'), budgetGroupToNode('expenses')]
+  nodes: [budgetGroupToNode('income'), budgetGroupToNode('expenses'), budgetGroupToNode('savings')]
 }));
 
 defineExpose({

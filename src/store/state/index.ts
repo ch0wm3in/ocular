@@ -28,7 +28,11 @@ export const useDataStore = createGlobalState(() => {
   const state = reactive<DataState>(generateTemplateData(base.currency, base.locale, t));
 
   const budgetYear = computed(() => state.years.find((v) => v.year === currentYear.value)!);
-  const budgetGroups = computed(() => [...budgetYear.value.expenses, ...budgetYear.value.income]);
+  const budgetGroups = computed(() => [
+    ...budgetYear.value.expenses,
+    ...budgetYear.value.income,
+    ...budgetYear.value.savings
+  ]);
 
   const getBudget = (id: string) => budgetGroups.value.flatMap((v) => v.budgets).find((v) => v.id === id);
   const getBudgetGroup = (id: string) => budgetGroups.value.find((v) => v.id === id);
@@ -83,6 +87,9 @@ export const useDataStore = createGlobalState(() => {
       },
       get income() {
         return budgetYear.value.income;
+      },
+      get savings() {
+        return budgetYear.value.savings;
       },
       get endingBalance() {
         return sumOfBudgetYear(budgetYear.value);

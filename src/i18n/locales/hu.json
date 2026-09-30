@@ -56,7 +56,7 @@
     "info": {
       "about": "Az Ocular névjegye",
       "github": "Nézze meg ezt a projektet {link}-on, fontolja meg a {donation}-t, hogy életben maradjon!",
-      "madeWithLove": "Készítette: Simon",
+      "madeWithLove": "Készítette: ch0wm3in",
       "meta": "{version} / {date} / {sha}",
       "donation": "adomány"
     },
@@ -111,6 +111,9 @@
     "expenses": {
       "title": "Kiadások",
       "expensesFor": "{year} kiadásai"
+    },
+    "savings": {
+      "title": "Savings / Transfers"
     },
     "dashboard": {
       "income": "Bevételek",

@@ -1,0 +1,344 @@
+{
+  "navigation": {
+    "tools": {
+      "tools": "Værktøjer",
+      "changePassword": {
+        "change": "Skift adgangskode",
+        "current": "Nuværende adgangskode",
+        "new": "Ny adgangskode",
+        "invalid": "Nuværende adgangskode er ugyldig.",
+        "unknownError": "Noget gik galt. Prøv igen senere."
+      },
+      "copyPaste": {
+        "copyPasteData": "Kopiér / indsæt data",
+        "copyPasteDataFromOneYearToAnother": "Kopiér / indsæt data fra ét år til et andet",
+        "fromYear": "Fra år",
+        "copyTheseGroupsFromIncome": "Kopiér disse grupper fra indkomst",
+        "andTheseGroupsFromExpenses": "Og disse grupper fra udgifter",
+        "nothingToAddAnymore": "Ikke mere at tilføje...",
+        "toYear": "Til år",
+        "includeValues": "Medtag værdier",
+        "transferData": "Overfør data"
+      },
+      "demo": {
+        "loadDemoData": "Indlæs demodata",
+        "overwriteExistingData": "Der findes allerede data. Vil du overskrive dem?"
+      },
+      "deleteYear": {
+        "delete": "Fjern {year}",
+        "confirm": "Er du sikker på, at du vil fjerne {year}?"
+      },
+      "export": { "export": "Eksportér som JSON-fil" },
+      "import": {
+        "import": "Importér fra JSON-fil",
+        "what": {
+          "google": "Google Sheets-årsbudgetfil",
+          "ocular": "En tidligere eksporteret fil",
+          "title": "Hvad vil du importere?"
+        },
+        "ocular": {
+          "pickFile": "Vælg din .json-fil til import",
+          "import": "Importér Ocular-data"
+        },
+        "google": {
+          "import": "Importér Google-data",
+          "expenses": "Expenses.csv",
+          "income": "Income.csv"
+        }
+      },
+      "privacyMode": {
+        "disable": "Skift til offentlig tilstand",
+        "enable": "Skift til privat tilstand"
+      }
+    },
+    "info": {
+      "about": "Om Ocular",
+      "github": "Se projektet på {link}, og overvej en {donation} for at holde det i live!",
+      "madeWithLove": "Lavet med ❤️ af ch0wm3in",
+      "meta": "{version} / {date} / {sha}",
+      "donation": "donation"
+    },
+    "theme": { "change": "Skift farvetema" },
+    "year": { "change": "Skift til et andet år" },
+    "auth": {
+      "welcomeBack": "Velkommen tilbage!",
+      "signIn": "Log ind",
+      "username": "Brugernavn",
+      "password": "Adgangskode",
+      "loginNotAvailable": "Login er ikke tilgængeligt. Backend er ikke konfigureret.",
+      "loginNotAvailableDueToHttp": "Login virker muligvis ikke via HTTP. Sørg for at sætte GENESIS_JWT_COOKIE_ALLOW_HTTP til true i din .env-fil, eller brug HTTPS.",
+      "incorrectUsernameOrPassword": "Login mislykkedes. Brugernavn eller adgangskode er ugyldig.",
+      "tooManyFailedAttempts": "For mange mislykkede forsøg. Prøv igen om {duration}."
+    },
+    "admin": {
+      "settings": "Administratorindstillinger",
+      "createUser": "Opret bruger",
+      "username": "Brugernavn",
+      "password": "Adgangskode",
+      "admin": "Administrator",
+      "conflict": "En bruger med dette navn findes allerede.",
+      "error": "Noget gik galt. Prøv igen senere.",
+      "deleteUserConfirmation": "Er du sikker på, at du vil slette denne bruger?",
+      "manageUsers": "Administrer brugere",
+      "noUsersFound": "Ingen brugere fundet..."
+    },
+    "settings": {
+      "settings": "Indstillinger",
+      "language": "Sprog",
+      "currency": "Valuta",
+      "firstMonthOfYear": "Første måned i året",
+      "carryOverNetSavings": "Overfør nettoopsparing",
+      "carryOverNetSavingsInfo": "Hvis aktiveret, overføres nettoopsparingen fra det forrige år til det næste år.",
+      "showAnimationsAndTransitions": "Vis animationer og overgange",
+      "switchNumberSeparators": "Skift skilletegn ({old} ↔ {new})",
+      "showMinimumFractionDigits": "Vis altid to decimaler ({old} ↔ {new})"
+    },
+    "update": { "updateApp": "Opdatér app" }
+  },
+  "page": {
+    "income": { "title": "Indkomst", "incomeFor": "Indkomst for {year}" },
+    "expenses": { "title": "Udgifter", "expensesFor": "Udgifter for {year}" },
+    "savings": {
+      "title": "Opsparing / Overførsler"
+    },
+    "dashboard": {
+      "income": "Indkomst",
+      "expenses": "Udgifter",
+      "endingBalance": "Slutsaldo",
+      "budgetFor": "Årligt budget for {year}",
+      "summary": { "title": "Oversigt", "netSavings": "Nettoopsparing" },
+      "overview": {
+        "title": "Oversigt",
+        "remainingBalance": "Resterende saldo indtil {year}",
+        "yearInThePast": "Året er i fortiden",
+        "yearInTheFuture": "Året er i fremtiden",
+        "yearEnding": "Dette år er ved at slutte...",
+        "downloadAsPNG": "Download som PNG",
+        "downloadAsSVG": "Download som SVG",
+        "jumpToIncome": "Gå til indkomst for {year}",
+        "jumpToExpenses": "Gå til udgifter for {year}",
+        "lastYear": "Sidste år",
+        "surplus": "Overskud",
+        "deficit": "Underskud",
+        "downloadChart": "Download diagram",
+        "toggleBetweenAveragesAndTotals": "Skift mellem månedlige gennemsnit og totaler",
+        "toggleChartType": "Skift diagramtype",
+        "togglePercentages": "Skift mellem procent og absolutte værdier"
+      },
+      "allTime": {
+        "title": "Oversigt",
+        "incomeTrend": "Indkomstudvikling",
+        "allTimeFromTo": "Samlet fra {from} til {to}",
+        "expensesTrend": "Udgiftsudvikling",
+        "yoyIncomeGrowth": "Årlig indkomstvækst",
+        "yoyExpenseGrowth": "Årlig udgiftsvækst",
+        "allTimeIncome": "Samlet indkomst",
+        "allTimeExpenses": "Samlede udgifter",
+        "allTimeSavings": "Samlet opsparing"
+      },
+      "compare": {
+        "title": "Sammenlign år",
+        "compareThisYear": "Sammenlign dette år",
+        "againstThisYear": "med dette år",
+        "minimumTwoYearsRequired": "Der kræves mindst to års data for at sammenligne.",
+        "upComparedTo": "\"{name}\" steg {percent} (+{absolute}) sammenlignet med {year}",
+        "downComparedTo": "\"{name}\" faldt {percent} (-{absolute}) sammenlignet med {year}",
+        "sameAs": "\"{name}\" er det samme som i {year} ({absolute})",
+        "toggleControls": "Vis/skjul kontrolelementer",
+        "comparingYearWithYear": "Sammenligner {a} med {b}"
+      }
+    }
+  },
+  "feature": {
+    "budgetGroup": {
+      "budgetGroupsHidden": "Ingen budgetgrupper at skjule. | Én budgetgruppe skjult. | {count} budgetgrupper skjult.",
+      "newBudget": "Nyt budget"
+    },
+    "statusBar": {
+      "synchronizationFailedDueToNetworkError": "Synkronisering mislykkedes på grund af netværksfejl!",
+      "retryingPleaseWait": "Prøver igen, vent venligst...",
+      "retrySynchronization": "Prøv synkronisering igen",
+      "noBackendAttached": "Ingen backend konfigureret; kører i demotilstand. Data gemmes ikke.",
+      "newVersionAvailable": "En ny version er tilgængelig!",
+      "dismiss": "Afvis",
+      "newVersionRequired": "En ny version kræves for at fortsætte. Opdatér siden."
+    },
+    "budgetPane": {
+      "addGroup": "Tilføj gruppe",
+      "newGroup": "Ny gruppe",
+      "append": "Flyt “{from}” efter “{to}”",
+      "average": "Gennemsnit",
+      "move": "Flyt “{from}”",
+      "moveInto": "Flyt “{from}” ind i “{to}”",
+      "prepend": "Flyt “{from}” før “{to}”",
+      "fillRow": "Udfyld række",
+      "fillRowToRight": "Udfyld mod højre",
+      "total": "Total",
+      "totals": "Totaler",
+      "groupName": "Gruppenavn ({name})",
+      "budgetName": "Budgetnavn ({name}"
+    },
+    "chartPlaceholder": {
+      "placeholder": "Start med at udfylde fanerne for indkomst / udgifter! :)"
+    },
+    "templates": {
+      "demo": {
+        "expenses": {
+          "children": "Børn",
+          "debt": "Gæld",
+          "education": "Uddannelse",
+          "entertainment": "Underholdning",
+          "everyday": "Hverdag",
+          "gifts": "Gaver",
+          "healthMedical": "Sundhed / læge",
+          "home": "Hjem",
+          "insurance": "Forsikring",
+          "transportation": "Transport",
+          "travel": "Rejser",
+          "utilities": "Forsyning"
+        },
+        "budgets": {
+          "activities": "Aktiviteter",
+          "medical": "Læge",
+          "childcare": "Børnepasning",
+          "school": "Skole",
+          "other": "Andet",
+          "studentLoans": "Studielån",
+          "musicLessons": "Musikundervisning",
+          "concertsShows": "Koncerter/shows",
+          "music": "Musik",
+          "theatrePlays": "Teater/skuespil",
+          "groceries": "Dagligvarer",
+          "restaurants": "Restauranter",
+          "personalSupplies": "Personlige fornødenheder",
+          "subscriptions": "Abonnementer",
+          "gifts": "Gaver",
+          "donationsCharity": "Donationer (velgørenhed)",
+          "doctorsDentalVision": "Læge/tandlæge/syn",
+          "rentMortgage": "Husleje/realkredit",
+          "propertyTaxes": "Ejendomsskatter",
+          "car": "Bil",
+          "health": "Sundhed",
+          "fuel": "Brændstof",
+          "supplies": "Fornødenheder",
+          "airfare": "Flybillet",
+          "hotels": "Hoteller",
+          "phone": "Telefon",
+          "internet": "Internet",
+          "electricity": "Elektricitet",
+          "gas": "Gas",
+          "water": "Vand"
+        },
+        "income": {
+          "wages": "Løn",
+          "paySlip": "Lønseddel",
+          "bonus": "Bonus",
+          "other": "Andet",
+          "interestIncome": "Renteindtægt",
+          "dividends": "Udbytte"
+        }
+      },
+      "base": {
+        "group": {
+          "children": "Børn",
+          "debt": "Gæld",
+          "education": "Uddannelse",
+          "entertainment": "Underholdning",
+          "everyday": "Hverdag",
+          "gifts": "Gaver",
+          "healthMedical": "Sundhed / læge",
+          "home": "Hjem",
+          "insurance": "Forsikring",
+          "pets": "Kæledyr",
+          "technology": "Teknologi",
+          "transportation": "Transport",
+          "travel": "Rejser",
+          "utilities": "Forsyning",
+          "other": "Andet",
+          "wages": "Løn"
+        },
+        "category": {
+          "activities": "Aktiviteter",
+          "medical": "Læge",
+          "childcare": "Børnepasning",
+          "clothing": "Tøj",
+          "school": "Skole",
+          "toys": "Legetøj",
+          "other": "Andet",
+          "creditCards": "Kreditkort",
+          "studentLoans": "Studielån",
+          "otherLoans": "Andre lån",
+          "taxes": "Skatter",
+          "tuition": "Undervisning",
+          "books": "Bøger",
+          "musicLessons": "Musikundervisning",
+          "concertsShows": "Koncerter/shows",
+          "games": "Spil",
+          "hobbies": "Hobbyer",
+          "films": "Film",
+          "music": "Musik",
+          "outdoorActivities": "Udendørsaktiviteter",
+          "photography": "Fotografi",
+          "sport": "Sport",
+          "theatrePlays": "Teater/skuespil",
+          "tv": "TV",
+          "groceries": "Dagligvarer",
+          "restaurants": "Restauranter",
+          "personalSupplies": "Personlige fornødenheder",
+          "clothes": "Tøj",
+          "laundryDryCleaning": "Vask/rens",
+          "hairBeauty": "Hår/skønhed",
+          "subscriptions": "Abonnementer",
+          "gifts": "Gaver",
+          "donationsCharity": "Donationer (velgørenhed)",
+          "doctorsDentalVision": "Læge/tandlæge/syn",
+          "specialistCare": "Specialistbehandling",
+          "pharmacy": "Apotek",
+          "emergency": "Nødstilfælde",
+          "rentMortgage": "Husleje/realkredit",
+          "propertyTaxes": "Ejendomsskatter",
+          "furnishings": "Indretning",
+          "lawnGarden": "Plæne/have",
+          "supplies": "Fornødenheder",
+          "maintenance": "Vedligeholdelse",
+          "improvements": "Forbedringer",
+          "moving": "Flytning",
+          "car": "Bil",
+          "health": "Sundhed",
+          "homeInsurance": "Bolig",
+          "life": "Liv",
+          "food": "Mad",
+          "vetMedical": "Dyrlæge",
+          "domainsAndHosting": "Domæner og hosting",
+          "onlineServices": "Onlinetjenester",
+          "hardware": "Hardware",
+          "software": "Software",
+          "fuel": "Brændstof",
+          "carPayments": "Bilafdrag",
+          "repairs": "Reparationer",
+          "registrationLicense": "Registrering/kørekort",
+          "publicTransit": "Offentlig transport",
+          "airfare": "Flybillet",
+          "hotels": "Hoteller",
+          "transportation": "Transport",
+          "phone": "Telefon",
+          "internet": "Internet",
+          "electricity": "Elektricitet",
+          "heatGas": "Varme/gas",
+          "water": "Vand",
+          "category1": "[Kategori 1]",
+          "category2": "[Kategori 2]",
+          "paySlip": "Lønseddel",
+          "tips": "Drikkepenge",
+          "bonus": "Bonus",
+          "commission": "Provision",
+          "transferFromSavings": "Overførsel fra opsparing",
+          "interestIncome": "Renteindtægt",
+          "dividends": "Udbytte",
+          "refunds": "Refusioner"
+        }
+      }
+    },
+    "undoButton": { "undo": "Fortryd sidste handling" }
+  }
+}
