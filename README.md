@@ -1,7 +1,7 @@
 <br/>
 
 <h3 align="center">
-  <img src="https://github.com/ch0wm3in/ocular/assets/30767528/2cbd76cd-adfb-4183-a69a-15784c4dccb6" alt="Logo" height="150">
+  <img src="https://github.com/simonwep/ocular/assets/30767528/2cbd76cd-adfb-4183-a69a-15784c4dccb6" alt="Logo" height="150">
 </h3>
 
 
